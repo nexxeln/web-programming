@@ -44,11 +44,28 @@ def create_exercise_doc(exercise_num):
     doc.add_paragraph("Name: Shoubhit Dash")
     doc.add_paragraph("Registration Number: 23BRS1224")
     doc.add_paragraph("Course Code: BCSE203E")
-    doc.add_paragraph(f"Live URL: https://webprog.nexxel.dev/exercises/{exercise_num}")
+    doc.add_paragraph(f"Live URL: https://webprog.nexxel.dev/{exercise_num}.html")
     doc.add_paragraph()
 
-    # Base directory for the exercise
-    base_dir = f"exercises/{exercise_num}"
+    # First add the main exercise HTML file
+    main_html_path = f"public/{exercise_num}.html"
+    if os.path.exists(main_html_path):
+        doc.add_heading("Main Exercise Page", level=1)
+        doc.add_heading("HTML", level=2)
+        content = read_file_content(main_html_path)
+        if content:
+            add_code_block(doc, content, "HTML")
+
+    # Add the main CSS file
+    main_css_path = "src/style.css"
+    if os.path.exists(main_css_path):
+        doc.add_heading("CSS", level=2)
+        content = read_file_content(main_css_path)
+        if content:
+            add_code_block(doc, content, "CSS")
+
+    # Base directory for the exercise subpages
+    base_dir = f"public/exercises/{exercise_num}"
 
     if not os.path.exists(base_dir):
         print(f"Error: Exercise {exercise_num} directory not found")
