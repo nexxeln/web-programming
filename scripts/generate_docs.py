@@ -57,7 +57,7 @@ def create_exercise_doc(exercise_num):
             add_code_block(doc, content, "HTML")
 
     # Add the main CSS file
-    main_css_path = "src/style.css"
+    main_css_path = "public/style.css"
     if os.path.exists(main_css_path):
         doc.add_heading("CSS", level=2)
         content = read_file_content(main_css_path)
