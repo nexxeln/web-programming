@@ -1,3 +1,14 @@
 {
-  "rewrites": [{ "source": "/:path*", "destination": "/:path*.html" }]
+  "rewrites": [
+    { "source": "/1", "destination": "/1.html" },
+    { "source": "/2", "destination": "/2.html" },
+    {
+      "source": "/exercises/:exercise/:section/index",
+      "destination": "/exercises/:exercise/:section/index.html"
+    },
+    {
+      "source": "/exercises/:exercise/:section",
+      "destination": "/exercises/:exercise/:section/index.html"
+    }
+  ]
 }
