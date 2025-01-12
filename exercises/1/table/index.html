@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Layout</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: #fffcf0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .table {
+        border: 2px solid #100f0f;
+        border-collapse: collapse;
+        width: 600px;
+      }
+
+      .table td {
+        border: 1px solid #100f0f;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Specific cell sizes */
+      .cell-a {
+        width: 20%;
+      }
+      .cell-bc {
+        width: 10%;
+      }
+      .cell-d {
+        width: 20%;
+      }
+      .cell-e {
+        width: 30%;
+      }
+      .cell-f {
+        width: 10%;
+      }
+      .cell-ghi {
+        width: 10%;
+      }
+      .cell-k {
+        width: 40%;
+      }
+      .cell-l {
+        width: 20%;
+      }
+      .cell-m {
+        width: 40%;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="table">
+      <tr>
+        <td rowspan="2" class="cell-a">A</td>
+        <td class="cell-bc">B</td>
+        <td class="cell-d" rowspan="3">D</td>
+        <td colspan="2" class="cell-e">E</td>
+        <td class="cell-f">F</td>
+      </tr>
+      <tr>
+        <td class="cell-bc">C</td>
+        <td rowspan="2" class="cell-ghi">G</td>
+        <td rowspan="2" class="cell-ghi">H</td>
+        <td rowspan="2" class="cell-ghi">I</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="cell-j">J</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="cell-k">K</td>
+        <td class="cell-l">L</td>
+        <td colspan="2" class="cell-m">M</td>
+      </tr>
+    </table>
+  </body>
+</html>

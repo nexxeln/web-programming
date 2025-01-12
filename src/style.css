@@ -1,0 +1,141 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderFlow {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #fffcf0;
+  color: #100f0f;
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 3rem;
+  animation: fadeIn 0.3s ease-out 0.08s backwards;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #66800b;
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  background-color: #66800b;
+  animation: borderFlow 0.3s ease-out 0.35s forwards;
+  width: 0%;
+}
+
+.student-info {
+  color: #6f6e69;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+  animation: fadeIn 0.3s ease-out 0.15s backwards;
+}
+
+.student-info p {
+  margin: 0.5rem 0;
+}
+
+.exercises {
+  border-top: 2px solid #e6e4d9;
+  padding-top: 2rem;
+  animation: fadeIn 0.3s ease-out 0.22s backwards;
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  background: linear-gradient(to right, #f2f0e5 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  border-bottom: 1px solid #f2f0e5;
+}
+
+li a {
+  flex-grow: 1;
+  padding: 0.8rem 1rem;
+  padding-right: 3rem;
+  color: #403e3c;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+li::before {
+  content: "• ";
+  color: #66800b;
+}
+
+li:hover {
+  background-position: left bottom;
+}
+
+li:hover a {
+  color: #66800b;
+  padding-left: 1.5rem;
+}
+
+li::after {
+  content: "→";
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #66800b;
+  margin-right: 1.5rem;
+}
+
+li:hover::after {
+  opacity: 1;
+}
+
+.github-link {
+  color: #66800b;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  display: block;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.github-link:hover {
+  color: #879a39;
+}

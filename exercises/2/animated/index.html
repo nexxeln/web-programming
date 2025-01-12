@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #1a1a1a;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        color: white;
+        position: relative;
+        padding: 2rem;
+      }
+
+      .floating-shapes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .shape {
+        position: absolute;
+        animation: float 15s infinite linear;
+        opacity: 0.2;
+      }
+
+      .shape:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        background: #ff6b6b;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        top: 20%;
+        left: 20%;
+        animation: float 12s infinite linear;
+      }
+
+      .shape:nth-child(2) {
+        width: 60px;
+        height: 60px;
+        background: #4ecdc4;
+        border-radius: 50%;
+        top: 60%;
+        right: 30%;
+        animation: floatReverse 15s infinite linear;
+      }
+
+      .shape:nth-child(3) {
+        width: 70px;
+        height: 70px;
+        background: #ffe66d;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        bottom: 20%;
+        left: 40%;
+        animation: spin 10s infinite linear;
+      }
+
+      .shape:nth-child(4) {
+        width: 50px;
+        height: 50px;
+        background: #ff9f68;
+        clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        top: 40%;
+        right: 20%;
+        animation: bounce 8s infinite ease-in-out;
+      }
+
+      .shape:nth-child(5) {
+        width: 40px;
+        height: 40px;
+        background: #a8e6cf;
+        clip-path: polygon(
+          30% 0%,
+          70% 0%,
+          100% 30%,
+          100% 70%,
+          70% 100%,
+          30% 100%,
+          0% 70%,
+          0% 30%
+        );
+        bottom: 30%;
+        right: 40%;
+        animation: zigzag 20s infinite linear;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        animation: glow 3s infinite alternate;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .text-container {
+        overflow: hidden;
+        margin: 2rem 0;
+      }
+
+      .animated-text {
+        font-size: 1.5rem;
+        animation: slideUp 0.8s ease-out backwards, colorChange 5s infinite;
+      }
+
+      .animated-text:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .animated-text:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .animated-text:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(100px, 100px) rotate(180deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(360deg);
+        }
+      }
+
+      @keyframes floatReverse {
+        0% {
+          transform: translate(0, 0) rotate(360deg);
+        }
+        50% {
+          transform: translate(-100px, 100px) rotate(180deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-100px);
+        }
+      }
+
+      @keyframes zigzag {
+        0% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(100px, -50px);
+        }
+        50% {
+          transform: translate(0, -100px);
+        }
+        75% {
+          transform: translate(-100px, -50px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        to {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+            0 0 30px rgba(255, 255, 255, 0.6);
+        }
+      }
+
+      @keyframes colorChange {
+        0% {
+          color: #fff;
+        }
+        33% {
+          color: #ff6b6b;
+        }
+        66% {
+          color: #4ecdc4;
+        }
+        100% {
+          color: #fff;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+
+    <div class="container">
+      <h1 class="pulse">Animation Magic</h1>
+
+      <div class="text-container">
+        <p class="animated-text">Watch as elements slide</p>
+        <p class="animated-text">Float through space</p>
+        <p class="animated-text">And come to life</p>
+      </div>
+    </div>
+  </body>
+</html>

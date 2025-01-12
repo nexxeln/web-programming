@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brew Haven</title>
+    <style>
+      :root {
+        --primary: #4a3428;
+        --secondary: #8b5e3c;
+        --accent: #d4a574;
+        --light: #f9f5f0;
+        --text: #2c1810;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--light);
+      }
+
+      .hero {
+        height: 80vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3")
+            center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        animation: fadeDown 1s ease;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        animation: fadeUp 1s ease 0.3s backwards;
+      }
+
+      .menu {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .menu h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .menu-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-item h3 {
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .menu-item .price {
+        color: var(--accent);
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+      }
+
+      .about {
+        background-color: var(--primary);
+        color: white;
+        padding: 5rem 2rem;
+        text-align: center;
+      }
+
+      .about h2 {
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+      }
+
+      .about p {
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Brew Haven</h1>
+        <p>Where every cup tells a story</p>
+      </div>
+    </section>
+
+    <section class="menu">
+      <h2>Our Menu</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <h3>Espresso</h3>
+          <p>Pure and intense, our signature espresso shot</p>
+          <div class="price">₹120</div>
+        </div>
+        <div class="menu-item">
+          <h3>Cappuccino</h3>
+          <p>Perfect balance of espresso, steamed milk, and foam</p>
+          <div class="price">₹180</div>
+        </div>
+        <div class="menu-item">
+          <h3>Latte</h3>
+          <p>Smooth espresso with steamed milk and light foam</p>
+          <div class="price">₹160</div>
+        </div>
+        <div class="menu-item">
+          <h3>Cold Brew</h3>
+          <p>Slow-steeped for 12 hours, smooth and refreshing</p>
+          <div class="price">₹200</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>Our Story</h2>
+      <p>
+        Founded in 2024, Brew Haven is more than just a coffee shop - it's a
+        sanctuary for coffee lovers. We source our beans directly from
+        sustainable farms and roast them in-house to ensure the perfect cup
+        every time. Our baristas are passionate about their craft and are always
+        ready to guide you through your coffee journey.
+      </p>
+    </section>
+  </body>
+</html>
