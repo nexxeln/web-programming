@@ -1,0 +1,16 @@
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin-right: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}

@@ -1,6 +1,6 @@
 import "./style.css";
 
-const exercises = [1, 2];
+const exercises = [1, 2, 3];
 
 const exerciseList = document.getElementById("exercise-list");
 

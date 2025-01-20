@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  background-color: #000;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.logo {
+  position: absolute;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  text-transform: lowercase;
+  user-select: none;
+  animation: moveX 7s linear infinite alternate,
+    moveY 4s linear infinite alternate;
+}
+
+@keyframes moveX {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 10rem);
+  }
+}
+
+@keyframes moveY {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - 6rem);
+  }
+}
+
+.status {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.signal {
+  margin-bottom: 0.25rem;
+}
+
+.input {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
