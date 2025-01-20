@@ -66,7 +66,11 @@ def create_exercise_doc(exercise_num):
     html_files.sort()
 
     # Add each file's content
-    for file_path in html_files:
+    for i, file_path in enumerate(html_files):
+        # Add page break before each problem except the first one
+        if i > 0:
+            doc.add_page_break()
+
         # Get section name from directory name
         section_name = os.path.dirname(file_path).replace("-", " ").title()
         if not section_name:
