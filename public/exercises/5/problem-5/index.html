@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shape Drawing</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="toolbar">
+        <div class="tool-section">
+          <h3>Shapes</h3>
+          <button class="tool-btn active" data-shape="rectangle">
+            <span class="shape-icon">▭</span> Rectangle
+          </button>
+          <button class="tool-btn" data-shape="circle">
+            <span class="shape-icon">○</span> Circle
+          </button>
+          <button class="tool-btn" data-shape="triangle">
+            <span class="shape-icon">△</span> Triangle
+          </button>
+        </div>
+        <div class="tool-section">
+          <h3>Colors</h3>
+          <div class="color-picker">
+            <input type="color" id="fillColor" value="#4CAF50" />
+            <label for="fillColor">Fill Color</label>
+          </div>
+          <div class="color-picker">
+            <input type="color" id="strokeColor" value="#000000" />
+            <label for="strokeColor">Stroke Color</label>
+          </div>
+        </div>
+        <div class="tool-section">
+          <h3>Actions</h3>
+          <button id="clearCanvas" class="action-btn">Clear Canvas</button>
+          <button id="undoBtn" class="action-btn">Undo</button>
+        </div>
+      </div>
+      <div class="canvas-container">
+        <canvas id="drawingCanvas"></canvas>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
