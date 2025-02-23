@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the Number</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Guess the Number</h1>
+      <div class="game-container">
+        <p class="range-info">
+          I'm thinking of a number between <span>1</span> and <span>100</span>
+        </p>
+        <div class="input-group">
+          <input
+            type="number"
+            id="guess"
+            placeholder="Enter your guess"
+            min="1"
+            max="100"
+          />
+          <button onclick="checkGuess()">Guess!</button>
+        </div>
+        <div class="feedback" id="feedback">
+          <p id="message">Start guessing!</p>
+          <div class="stats">
+            <span>Attempts: <span id="attempts">0</span></span>
+            <span>High Score: <span id="highScore">-</span></span>
+          </div>
+        </div>
+        <div class="history" id="history">
+          <h3>Previous Guesses</h3>
+          <div class="guess-list" id="guessList"></div>
+        </div>
+        <button class="new-game" onclick="newGame()">New Game</button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
