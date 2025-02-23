@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLAMES Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>FLAMES Game</h1>
+      <div class="game-container">
+        <div class="input-group">
+          <input
+            type="text"
+            id="name1"
+            placeholder="Enter first name"
+            required
+          />
+          <input
+            type="text"
+            id="name2"
+            placeholder="Enter second name"
+            required
+          />
+          <button onclick="calculateFlames()">Calculate Relationship</button>
+        </div>
+        <div class="result" id="result">
+          <div class="flames-letters">
+            <span class="letter">F</span>
+            <span class="letter">L</span>
+            <span class="letter">A</span>
+            <span class="letter">M</span>
+            <span class="letter">E</span>
+            <span class="letter">S</span>
+          </div>
+          <div id="relationship-text"></div>
+        </div>
+      </div>
+      <div class="legend">
+        <h3>FLAMES stands for:</h3>
+        <ul>
+          <li><strong>F</strong>riends</li>
+          <li><strong>L</strong>overs</li>
+          <li><strong>A</strong>ffectionate</li>
+          <li><strong>M</strong>arriage</li>
+          <li><strong>E</strong>nemy</li>
+          <li><strong>S</strong>iblings</li>
+        </ul>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
