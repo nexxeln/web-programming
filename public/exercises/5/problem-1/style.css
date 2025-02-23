@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.traffic-light {
+  width: 100px;
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.light {
+  width: 60px;
+  height: 60px;
+  background-color: gray;
+  border-radius: 50%;
+  transition: background-color 0.5s;
+}
+
+.red.active {
+  background-color: red;
+}
+
+.yellow.active {
+  background-color: yellow;
+}
+
+.green.active {
+  background-color: green;
+}
