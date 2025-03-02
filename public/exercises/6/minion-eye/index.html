@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minion Eye</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fee600;
+        overflow: hidden;
+      }
+
+      .minion {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        background-color: #fee600;
+        border-radius: 150px 150px 100px 100px;
+        border: 10px solid #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .eye-band {
+        position: absolute;
+        top: 100px;
+        width: 320px;
+        height: 80px;
+        background-color: #333;
+        z-index: 1;
+      }
+
+      .mouth {
+        position: absolute;
+        bottom: 80px;
+        width: 100px;
+        height: 50px;
+        border: 8px solid #333;
+        border-radius: 0 0 50px 50px;
+        border-top: none;
+      }
+
+      .eye-container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 8px solid #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        overflow: hidden;
+      }
+
+      .eye-inner {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        background-color: #764a26;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .eye-pupil {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #000;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .eye-highlight {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #fff;
+        border-radius: 50%;
+        top: 30%;
+        right: 30%;
+      }
+
+      .goggle-strap {
+        position: absolute;
+        top: 140px;
+        width: 340px;
+        height: 15px;
+        background-color: #333;
+        z-index: 0;
+      }
+
+      .overall-top {
+        position: absolute;
+        bottom: 20px;
+        width: 180px;
+        height: 70px;
+        background-color: #4b72b3;
+        border-radius: 20px 20px 0 0;
+        z-index: 0;
+      }
+
+      .overall-strap {
+        position: absolute;
+        bottom: 50px;
+        width: 180px;
+        height: 40px;
+        z-index: 1;
+      }
+
+      .overall-strap:before,
+      .overall-strap:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 20px;
+        height: 80px;
+        background-color: #4b72b3;
+      }
+
+      .overall-strap:before {
+        left: 50px;
+        transform: rotate(-15deg);
+      }
+
+      .overall-strap:after {
+        right: 50px;
+        transform: rotate(15deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="minion">
+      <div class="eye-band"></div>
+      <div class="goggle-strap"></div>
+      <div class="eye-container">
+        <div class="eye-inner">
+          <div class="eye-pupil" id="pupil"></div>
+          <div class="eye-highlight"></div>
+        </div>
+      </div>
+      <div class="mouth"></div>
+      <div class="overall-top"></div>
+      <div class="overall-strap"></div>
+    </div>
+
+    <script>
+      const pupil = document.getElementById("pupil");
+      const eyeInner = document.querySelector(".eye-inner");
+      const eyeInnerRect = eyeInner.getBoundingClientRect();
+      const eyeInnerCenterX = eyeInnerRect.left + eyeInnerRect.width / 2;
+      const eyeInnerCenterY = eyeInnerRect.top + eyeInnerRect.height / 2;
+      const maxMovementRadius = (eyeInnerRect.width - pupil.offsetWidth) / 2;
+
+      function movePupil(e) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        const dx = mouseX - eyeInnerCenterX;
+        const dy = mouseY - eyeInnerCenterY;
+
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        let moveX = (dx / distance) * maxMovementRadius;
+        let moveY = (dy / distance) * maxMovementRadius;
+
+        if (distance < maxMovementRadius) {
+          moveX = dx;
+          moveY = dy;
+        }
+
+        pupil.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+      }
+
+      document.addEventListener("mousemove", movePupil);
+
+      window.addEventListener("resize", () => {
+        const updatedRect = eyeInner.getBoundingClientRect();
+        eyeInnerCenterX = updatedRect.left + updatedRect.width / 2;
+        eyeInnerCenterY = updatedRect.top + updatedRect.height / 2;
+      });
+    </script>
+  </body>
+</html>
