@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Light Text</title>
+    <style>
+      :root {
+        --cursorX: 50vw;
+        --cursorY: 50vh;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: #000;
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+        cursor: none;
+      }
+
+      .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .text {
+        font-size: 5rem;
+        font-weight: bold;
+        letter-spacing: 10px;
+        text-transform: uppercase;
+        color: #fff;
+        -webkit-mask-image: radial-gradient(
+          circle 200px at var(--cursorX) var(--cursorY),
+          white 20%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(0, 0, 0, 0) 80%
+        );
+        mask-image: radial-gradient(
+          circle 200px at var(--cursorX) var(--cursorY),
+          white 20%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(0, 0, 0, 0) 80%
+        );
+      }
+
+      h1 {
+        margin: 0;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text">
+        <h1>Flash Light Effect</h1>
+        <p>Move your cursor around to reveal the text</p>
+        <p>Web Programming Exercise 6</p>
+      </div>
+    </div>
+
+    <script>
+      function updatePosition(x, y) {
+        document.documentElement.style.setProperty("--cursorX", x + "px");
+        document.documentElement.style.setProperty("--cursorY", y + "px");
+      }
+
+      document.addEventListener("mousemove", (e) => {
+        updatePosition(e.clientX, e.clientY);
+      });
+
+      document.addEventListener(
+        "touchmove",
+        (e) => {
+          e.preventDefault();
+          const touch = e.touches[0];
+          updatePosition(touch.clientX, touch.clientY);
+        },
+        { passive: false }
+      );
+
+      updatePosition(window.innerWidth / 2, window.innerHeight / 2);
+    </script>
+  </body>
+</html>
