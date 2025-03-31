@@ -1,0 +1,196 @@
+:root {
+  --ghibli-blue: #a8d8ea;
+  --ghibli-pink: #ffb7b7;
+  --ghibli-cream: #fff5e6;
+  --ghibli-green: #98ddac;
+  --ghibli-text: #4a5568;
+  --ghibli-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--ghibli-blue) 0%,
+    var(--ghibli-pink) 100%
+  );
+  color: var(--ghibli-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ghibli-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px var(--ghibli-shadow);
+  width: 90%;
+  max-width: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ghibli-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--ghibli-text);
+  text-shadow: 2px 2px 4px var(--ghibli-shadow);
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.ghibli-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--ghibli-blue);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.ghibli-input:focus {
+  outline: none;
+  border-color: var(--ghibli-pink);
+  box-shadow: 0 0 0 3px rgba(255, 183, 183, 0.2);
+}
+
+.add-button {
+  padding: 0.8rem 2rem;
+  background: var(--ghibli-green);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--ghibli-shadow);
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--ghibli-shadow);
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px var(--ghibli-shadow);
+}
+
+.ghibli-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.ghibli-table th {
+  background: var(--ghibli-blue);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+}
+
+.ghibli-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--ghibli-cream);
+}
+
+.ghibli-table tr:hover {
+  background: var(--ghibli-cream);
+}
+
+.delete-button {
+  padding: 0.5rem 1rem;
+  background: var(--ghibli-pink);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+  background: #ff9e9e;
+  transform: translateX(2px);
+}
+
+.dust-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.soot-sprite {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float-sprite 8s ease-in-out infinite;
+}
+
+.soot-sprite:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.soot-sprite:nth-child(2) {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.soot-sprite:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float-sprite {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 768px) {
+  .ghibli-container {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .ghibli-input {
+    min-width: 100%;
+  }
+
+  .ghibli-title {
+    font-size: 2rem;
+  }
+}

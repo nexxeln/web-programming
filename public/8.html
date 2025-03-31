@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghibli Movie Tracker</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="ghibli-table.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      function GhibliTable() {
+        const [movies, setMovies] = React.useState([
+          {
+            title: "Spirited Away",
+            director: "Hayao Miyazaki",
+            year: 2001,
+            rating: "5/5",
+          },
+          {
+            title: "My Neighbor Totoro",
+            director: "Hayao Miyazaki",
+            year: 1988,
+            rating: "5/5",
+          },
+          {
+            title: "Princess Mononoke",
+            director: "Hayao Miyazaki",
+            year: 1997,
+            rating: "5/5",
+          },
+          {
+            title: "Howl's Moving Castle",
+            director: "Hayao Miyazaki",
+            year: 2004,
+            rating: "5/5",
+          },
+        ]);
+
+        const [newMovie, setNewMovie] = React.useState({
+          title: "",
+          director: "",
+          year: "",
+          rating: "",
+        });
+
+        const handleInputChange = (e) => {
+          const { name, value } = e.target;
+          setNewMovie((prev) => ({
+            ...prev,
+            [name]: value,
+          }));
+        };
+
+        const handleAddMovie = () => {
+          if (
+            newMovie.title &&
+            newMovie.director &&
+            newMovie.year &&
+            newMovie.rating
+          ) {
+            setMovies((prev) => [...prev, newMovie]);
+            setNewMovie({ title: "", director: "", year: "", rating: "" });
+          }
+        };
+
+        const handleDeleteMovie = (index) => {
+          setMovies((prev) => prev.filter((_, i) => i !== index));
+        };
+
+        return (
+          <div className="ghibli-container">
+            <h1 className="ghibli-title">Studio Ghibli Movies</h1>
+
+            <div className="input-group">
+              <input
+                type="text"
+                name="title"
+                value={newMovie.title}
+                onChange={handleInputChange}
+                placeholder="Movie Title"
+                className="ghibli-input"
+              />
+              <input
+                type="text"
+                name="director"
+                value={newMovie.director}
+                onChange={handleInputChange}
+                placeholder="Director"
+                className="ghibli-input"
+              />
+              <input
+                type="number"
+                name="year"
+                value={newMovie.year}
+                onChange={handleInputChange}
+                placeholder="Release Year"
+                className="ghibli-input"
+              />
+              <input
+                type="text"
+                name="rating"
+                value={newMovie.rating}
+                onChange={handleInputChange}
+                placeholder="Rating (e.g. 5/5)"
+                className="ghibli-input"
+              />
+              <button onClick={handleAddMovie} className="add-button">
+                Add Movie
+              </button>
+            </div>
+
+            <div className="table-container">
+              <table className="ghibli-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Director</th>
+                    <th>Year</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {movies.map((movie, index) => (
+                    <tr key={index}>
+                      <td>{movie.title}</td>
+                      <td>{movie.director}</td>
+                      <td>{movie.year}</td>
+                      <td>{movie.rating}</td>
+                      <td>
+                        <button
+                          onClick={() => handleDeleteMovie(index)}
+                          className="delete-button"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="dust-container">
+              <div className="soot-sprite"></div>
+              <div className="soot-sprite"></div>
+              <div className="soot-sprite"></div>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<GhibliTable />);
+    </script>
+  </body>
+</html>
